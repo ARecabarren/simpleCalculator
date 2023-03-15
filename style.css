@@ -1,0 +1,65 @@
+
+
+#calculator{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid green;
+    justify-content: center;
+    align-items: center;
+    width: 380px;
+    height: auto;
+}
+
+#bottomSection{
+    display: flex;
+    flex-direction: row;
+}
+#rightSection{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#rightSection > button{
+    height: 50%;
+    width: 100%;
+}
+
+#zero{
+    width: 60%;
+}
+#point{
+    width: 34%;
+}
+
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#basicSection, button{
+    width: 45px;
+    height: 45px;
+}
+
+#upperSection{
+    display: grid;
+    grid-template-columns: repeat(4,4fr);
+    gap: 0.5em;
+    margin: 0.5em 0;
+}
+
+#basicSection{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 0.5em;
+}
+
+
+button{
+    margin: 0.5em;
+    width: 45px;
+    height: 45px;
+}
