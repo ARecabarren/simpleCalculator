@@ -40,6 +40,9 @@ body {
 	grid-row: 1 / 2;
 	grid-column: 1 / -1;
 	text-align: right;
+	height: 57px;
+	font-family: monospace;
+	align-content: center;
 }
 
 .button-container {
