@@ -38,6 +38,8 @@ function operate(a,b,operator) {
 function display(value){
     calculatorDisplay.textContent = value
 }
+
+
 let calculatorDisplay = document.querySelector('.calculator-display')
 
 let clearButton = document.querySelector('.button-clear');
@@ -49,14 +51,12 @@ clearButton.addEventListener('click',() => {
     currentOperator = undefined;
 })
 
-let displayValue = ''
-//Populate display when click buttons
 
 let currentOperator,
-    lastOperator,
     decimalOff = true,
     firstValue,
-    secondValue;
+    secondValue,
+    displayValue = '';
 
 numbersButtons = document.querySelectorAll('.button-number');
 
@@ -98,11 +98,23 @@ for (const button of operatorsButtons) {
             //store operator
             currentOperator = button.value
         }else{
+            display('NaN')
             //Display NaN
         }
         
     })
 }
+
+buttonEquals = document.querySelector(".button-equals")
+buttonEquals.addEventListener('click',() =>{
+    if(firstValue,secondValue,currentOperator){
+        displayValue = operate(firstValue,secondValue,currentOperator)
+        display(displayValue)
+        firstValue = displayValue;
+        secondValue = ''
+        currentOperator = ''
+    }
+})
 
 buttonDecimal = document.querySelector('.button-decimal')
 buttonDecimal.addEventListener('click', () =>{
