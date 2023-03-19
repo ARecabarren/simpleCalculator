@@ -62,12 +62,7 @@ numbersButtons = document.querySelectorAll('.button-number');
 
 for (const button of numbersButtons) {
     button.addEventListener('click', ()=>{
-        if(displayValue && currentOperator && lastOperator){
-            
-
-
-        }else if(displayValue && currentOperator){
-
+        if(displayValue && currentOperator){
             if(!secondValue){
                 secondValue = button.value
                 display(secondValue)
@@ -92,10 +87,7 @@ operatorsButtons = document.querySelectorAll('.button-operator')
 for (const button of operatorsButtons) {
     button.addEventListener('click', () =>{
         // There is a previous operator?
-        if(firstValue && secondValue && currentOperator && lastOperator){
-
-
-        }else if(firstValue && secondValue ){
+        if(firstValue && secondValue ){
             // operar
             displayValue = operate(firstValue,secondValue,currentOperator) //Operate and display
             display(displayValue)
