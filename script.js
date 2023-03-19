@@ -14,6 +14,8 @@ function divide(a,b){
 }
 function operate(a,b,operator) {
     let result;
+    a = Number(a)
+    b = Number(b)
     switch(operator){
         case '+':
             result = add(a,b);
@@ -32,7 +34,10 @@ function operate(a,b,operator) {
             break
     } return result
 }
-
+// Other functions
+function display(value){
+    calculatorDisplay.textContent = value
+}
 let calculatorDisplay = document.querySelector('.calculator-display')
 
 let clearButton = document.querySelector('.button-clear');
@@ -57,14 +62,27 @@ numbersButtons = document.querySelectorAll('.button-number');
 
 for (const button of numbersButtons) {
     button.addEventListener('click', ()=>{
-        if(!currentOperator || !firstValue){
-            calculatorDisplay.textContent += button.value
-        }else if (firstValue && calculatorDisplay.textContent !== '') {
-            calculatorDisplay.textContent = ''
-            // currentOperator = undefined
-            calculatorDisplay.textContent += button.value
+        if(displayValue && currentOperator && lastOperator){
+            
+
+
+        }else if(displayValue && currentOperator){
+
+            if(!secondValue){
+                secondValue = button.value
+                display(secondValue)
+            }else{
+                secondValue += button.value
+                display(secondValue)
+            }
+        }else if(displayValue){
+            firstValue += button.value
+            displayValue += button.value;
+            display(displayValue)
         }else{
-            calculatorDisplay.textContent += button.value
+            firstValue = button.value
+            displayValue += button.value;
+            display(displayValue)
         }
 
     })
@@ -73,21 +91,22 @@ for (const button of numbersButtons) {
 operatorsButtons = document.querySelectorAll('.button-operator')
 for (const button of operatorsButtons) {
     button.addEventListener('click', () =>{
-        if(!currentOperator){
+        // There is a previous operator?
+        if(firstValue && secondValue && currentOperator && lastOperator){
+
+
+        }else if(firstValue && secondValue ){
+            // operar
+            displayValue = operate(firstValue,secondValue,currentOperator) //Operate and display
+            display(displayValue)
+            firstValue = displayValue; // Update first value
+            secondValue = ''
+            currentOperator = button.value //Update current operator
+        }else if(firstValue){
+            //store operator
             currentOperator = button.value
         }else{
-            lastOperator = currentOperator;
-            currentOperator = button.value;
-            displayValue = operate(firstValue,secondValue,lastOperator);
-            calculatorDisplay.textContent = displayValue
-        }
-        if(!firstValue){
-            firstValue = Number(calculatorDisplay.textContent)
-        }else if(currentOperator && lastOperator){
-            secondValue = Number(calculatorDisplay.textContent)
-            displayValue = operate(firstValue,secondValue,currentOperator)
-            firstValue = displayValue
-            calculatorDisplay.textContent = displayValue
+            //Display NaN
         }
         
     })
