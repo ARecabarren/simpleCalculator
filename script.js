@@ -157,7 +157,11 @@ buttonDecimal.addEventListener('click', () => {
         firstValue += buttonDecimal.value
         displayValue = firstValue
         display(firstValue)
-    } else{
+    } else if(firstValue){
+        firstValue += buttonDecimal.value
+        displayValue = firstValue
+        display(firstValue)
+    }else{
         displayValue = '0.'
         secondValue = displayValue
         display(displayValue)
